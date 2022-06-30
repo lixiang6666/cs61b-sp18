@@ -37,8 +37,8 @@ public class NBody{
             for(int i = 0; i < N; i++){
                 for(int j = 0; j < N; j++){
                     if(j!=i){
-                        xForces[i] += bodies[i].calcForceExertedByX(bodies[j]);
-                        yForces[i] += bodies[i].calcForceExertedByY(bodies[j]);
+                        xForces[i] += bodies[i].calcNetForceExertedByX(bodies[j]);
+                        yForces[i] += bodies[i].calcNetForceExertedByY(bodies[j]);
                         }
                     }
                  }
