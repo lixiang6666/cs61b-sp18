@@ -5,7 +5,7 @@ public class Planet{
     public double yyVel;
     public double mass;
     public String imgFileName;
-    public static String path = "images/";
+    private static String path = "images/";
 
     public Planet(double xP, double yP, double xV,
                   double yV, double m, String img){
