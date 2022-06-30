@@ -35,13 +35,9 @@ public class NBody{
             double[] xForces = new double[N];
             double[] yForces = new double[N];
             for(int i = 0; i < N; i++){
-                for(int j = 0; j < N; j++){
-                    if(j!=i){
-                        xForces[i] += bodies[i].calcNetForceExertedByX(bodies[j]);
-                        yForces[i] += bodies[i].calcNetForceExertedByY(bodies[j]);
-                        }
-                    }
-                 }
+                xForces[i] = bodies[i].calcNetForceExertedByX(bodies);
+                yForces[i] = bodies[i].calcNetForceExertedByY(bodies);
+                }
             for(int i = 0; i < N; i++){
                 bodies[i].update(dt, xForces[i], yForces[i]);
                 }
