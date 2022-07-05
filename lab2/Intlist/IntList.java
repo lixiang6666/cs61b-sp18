@@ -51,7 +51,7 @@ public class IntList {
         if (L == null) {
             return null;
         }
-        IntList res = new IntList(L.first * L.first, null);
+        IntList res = new IntList( L.first * L.first, null);
         IntList ptr = res;
         L = L.rest;
         while (L != null) {
@@ -61,7 +61,15 @@ public class IntList {
         }
         return res;
     }
-
+    /**
+     *2022.7.3 to write a recursive version
+     * public static IntList squareListRecursive(IntList L){
+     *     if (L == null){
+     *         return L;
+     *     }
+     *     return new IntList(L.first * L.first, squareListRecursive(L.rest));
+     * }
+     */
     /**
      * Returns a list equal to L with all elements squared. Non-destructive.
      */
@@ -82,20 +90,43 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList ptA = A;
+        while(ptA.rest != null){
+            ptA = ptA.rest;
+        }
+        ptA.rest = B;
+        return A;
     }
 
     /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
-    public static IntList catenate(IntList A, IntList B) {
+    /**public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if(A == null){
+            return B;
+        }
+        IntList AB = new IntList(A.first, null);
+        IntList ptrAB = AB;
+        while (A.rest != null) {
+            A = A.rest;
+            ptrAB.rest = new IntList(A.first, null);
+            ptrAB = ptrAB.rest;
+        }
+        ptrAB.rest = B;
+        return AB;
+    }*/
+
+    /**
+     * recursive version of catenate
+     */
+    public static IntList catenate(IntList A, IntList B) {
+        if (A == null){
+            return B;
+        }
+        return new IntList(A.first, catenate(A.rest, B ));
     }
-
-
-
 
 
 
