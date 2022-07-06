@@ -30,20 +30,34 @@ public class LinkedListDeque<T> {
         }
     }
 
-    public void addFirst(T item){
-        Node ptrNext = sentinel.next;
-        sentinel.next = new Node(item);
-        sentinel.next.next = ptrNext;
-        sentinel.next.prev = sentinel;
-        size = size + 1;
-    }
+    public void addFirst(T item) {
+        size += 1;
+        if (size == 1) {
+            sentinel.next = new Node(item);
+            sentinel.prev = sentinel.next;
+            sentinel.next.next = sentinel;
+            sentinel.next.prev = sentinel;
+        }else{
+            Node ptr = sentinel.next;
+            sentinel.next = new Node(item);
+            sentinel.next.next = ptr;
+            sentinel.next.prev = sentinel;
+        }
 
+    }
     public void addLast(T item){
-        Node ptrPrev = sentinel.prev;
-        sentinel.prev = new Node(item);
-        sentinel.prev.next = sentinel;
-        sentinel.prev.prev = ptrPrev;
-        size = size + 1;
+        size += 1;
+        if (size == 1) {
+            sentinel.next = new Node(item);
+            sentinel.prev = sentinel.next;
+            sentinel.next.next = sentinel;
+            sentinel.next.prev = sentinel;
+        }else{
+            Node ptr = sentinel.prev;
+            sentinel.prev = new Node(item);
+            sentinel.prev.next = sentinel;
+            sentinel.prev.prev = ptr;
+        }
     }
 
     public boolean isEmpty(){
