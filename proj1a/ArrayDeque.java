@@ -40,9 +40,11 @@ public class ArrayDeque<T> {
         if (size + 1 > arrsize) {
             lagerSize();
         }
-            System.arraycopy(array, 0,array,1, size);
-            array[0] = item;
+            T[] temparray = (T[]) new Object[arrsize];
+            System.arraycopy(array, 0,temparray,1, size);
+            temparray[0] = item;
             size += 1;
+            array = temparray;
     }
 
     public void addLast(T item){
@@ -73,25 +75,33 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
-        T firstitem = array[0];
-        T[] rearray  = (T[]) new Object[arrsize];
-        System.arraycopy(array,1,rearray,1,size -1);
-        array = rearray;
-        size -= 1;
-        while((double)size/arrsize < usageratio){
-            reduceSize();
+        if (size == 0){
+            return null;
+        }else{
+            T firstitem = array[0];
+            T[] rearray  = (T[]) new Object[arrsize];
+            System.arraycopy(array,1,rearray,0,size -1);
+            array = rearray;
+            size -= 1;
+            while(((double)size/arrsize < usageratio) && (arrsize > 8)) {
+                reduceSize();
+            }
+            return firstitem;
         }
-        return firstitem;
     }
 
     public T removeLast(){
-        T lastitem = array[size - 1];
-        array[size - 1] = null;
-        size -= 1;
-        while((double)size/arrsize < usageratio){
-            reduceSize();
-        }
+        if (size == 0){
+            return null;
+        }else{
+            T lastitem = array[size - 1];
+            array[size - 1] = null;
+            size -= 1;
+            while(((double)size/arrsize < usageratio)&&(arrsize > 8)){
+                reduceSize();
+            }
         return lastitem;
+        }
     }
 
     public T get(int index){
