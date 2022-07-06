@@ -92,6 +92,7 @@ public class LinkedListDeque<T> {
             T t = sentinel.next.first;
             sentinel.next = null;
             sentinel.prev = null;
+            size -= 2;
             return t;
         }
     }
@@ -108,6 +109,7 @@ public class LinkedListDeque<T> {
             T t = sentinel.next.first;
             sentinel.next = null;
             sentinel.prev = null;
+            size -= 1;
             return t;
         }
     }
