@@ -20,14 +20,14 @@ public class ArrayDeque<T> {
         }
     }
 
-    public void lagerSize(){
+    private void lagerSize(){
         T[] rearray =(T[])new Object[arrsize * refactor];
         System.arraycopy(array, 0,rearray,0, size);
         arrsize *= refactor;
         array = rearray;
     }
 
-    public void reduceSize(){
+    private void reduceSize(){
         T[] rearray = (T[])new Object[arrsize / refactor];
         System.arraycopy(array, 0,rearray,0,size);
         array = rearray;
