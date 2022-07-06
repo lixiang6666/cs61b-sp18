@@ -8,12 +8,14 @@ public class ArrayDeque<T> {
     public ArrayDeque(){
         size = 0;
         usageratio = 0.25;
+        arrsize = 8;
         refactor = 2;
         array =(T [])new Object[arrsize];
     }
 
     public ArrayDeque(ArrayDeque other){
         size = other.size;
+        arrsize = other.arrsize;;
         array = (T [])new Object[other.size];
         for (int i = 0; i < size; i++){
             array[i] = (T)other.get(i);
