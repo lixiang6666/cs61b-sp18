@@ -9,26 +9,26 @@ public class ArrayDeque<T> {
         size = 0;
         usageratio = 0.25;
         refactor = 2;
-        array =（T[]） new Object[arrsize];
+        array =（T [])new Object[arrsize];
     }
 
     public ArrayDeque(ArrayDeque other){
         size = other.size;
-        array = (T[]) new Object(other.size);
+        array = (T [])new Object[other.size];
         for (int i = 0; i < size; i++){
-            array[i] = other[i];
+            addLast(other.get(i));
         }
     }
 
     public void lagerSize(){
-        T[] rearray = （T[]） new Object[arrsize * refactor];
+        T[] rearray = （T[])new Object[arrsize * refactor];
         System.arraycopy(array, 0,rearray,0, size);
         arrsize *= refactor;
         array = rearray;
     }
 
     public void reduceSize(){
-        T[] rearray = (T[]) new Object[arrsize / refactor];
+        T[] rearray = (T[])new Object[arrsize / refactor];
         System.arraycopy(array, 0,rearray,0,size);
         array = rearray;
         arrsize /= refactor;
