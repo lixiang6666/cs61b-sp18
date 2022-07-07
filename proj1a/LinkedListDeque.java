@@ -40,6 +40,7 @@ public class LinkedListDeque<T> {
         }else{
             Node ptr = sentinel.next;
             sentinel.next = new Node(item);
+            ptr.prev = sentinel.next;
             sentinel.next.next = ptr;
             sentinel.next.prev = sentinel;
         }
@@ -55,6 +56,7 @@ public class LinkedListDeque<T> {
         }else{
             Node ptr = sentinel.prev;
             sentinel.prev = new Node(item);
+            ptr.next = sentinel.prev;
             sentinel.prev.next = sentinel;
             sentinel.prev.prev = ptr;
         }
@@ -86,6 +88,7 @@ public class LinkedListDeque<T> {
         }else if(size > 1){
             T t = sentinel.next.first;
             sentinel.next = sentinel.next.next;
+            sentinel.next.prev = sentinel;
             size -= 1;
             return t;
         }else{
@@ -103,6 +106,7 @@ public class LinkedListDeque<T> {
         }else if(size > 1){
             T t = sentinel.prev.first;
             sentinel.prev = sentinel.prev.prev;
+            sentinel.prev.next = sentinel;
             size -= 1;
             return t;
         }else{
