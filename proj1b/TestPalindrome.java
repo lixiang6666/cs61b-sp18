@@ -28,18 +28,18 @@ public class TestPalindrome {
 
         String test3 = "a";
         getByFunc = palindrome.isPalindrome(test3);
-        assertFalse(getByFunc);
+        assertTrue(getByFunc);
     }
     @Test
     public void testIsPalindrome2(){
         CharacterComparator cc = new OffByOne();
-        String test100 = "12332";
+        String test100 = "12312";
         assertTrue(palindrome.isPalindrome(test100, cc));
 
         String test2 = "racecar";
         assertFalse(palindrome.isPalindrome(test2, cc));
 
         String test3 = "a";
-        assertFalse(palindrome.isPalindrome(test3, cc));
+        assertTrue(palindrome.isPalindrome(test3, cc));
     }
 }

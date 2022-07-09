@@ -8,9 +8,6 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word){
-        if(word.length() < 2){
-            return false;
-        }
         Deque<Character> words = wordToDeque(word);
         return helperIsPalindrome(words);
     }
@@ -29,9 +26,6 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc){
-        if(word.length() < 2){
-            return false;
-        }
         Deque<Character> words = wordToDeque(word);
         return helperIsPalindrome2(words, cc);
     }

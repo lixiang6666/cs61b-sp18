@@ -5,10 +5,6 @@ public class OffByN implements CharacterComparator{
     }
 
    public boolean equalChars(char x, char y){
-            if ((int)x - (int)y == -N){
-                return true;
-            }else{
-                return false;
-            }
+       return ((int) x - (int) y == -N) || ((int) x - (int) y == N);
         }
 }
