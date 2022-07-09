@@ -1,4 +1,6 @@
-public class ArrayDeque<T> {
+
+
+public class ArrayDeque<T>{
     private T[] array;
     private int arrsize;
     private int size;
@@ -35,7 +37,7 @@ public class ArrayDeque<T> {
         array = rearray;
         arrsize /= refactor;
     }
-
+   
     public void addFirst(T item){
         if (size + 1 > arrsize) {
             lagerSize();
@@ -46,7 +48,7 @@ public class ArrayDeque<T> {
             size += 1;
             array = temparray;
     }
-
+    
     public void addLast(T item){
         if (size + 1 > arrsize) {
             lagerSize();
@@ -54,7 +56,7 @@ public class ArrayDeque<T> {
         array[size] = item;
         size += 1;
     }
-
+    
     public boolean isEmpty(){
         if (size == 0){
             return true;
@@ -62,18 +64,19 @@ public class ArrayDeque<T> {
             return false;
         }
     }
-
+    
     public int size(){
         return size;
     }
 
+    
     public void printDeque(){
         for (int i=0; i<size; i++){
             System.out.print(array[i] + " ");
         }
         System.out.println();
     }
-
+    
     public T removeFirst(){
         if (size == 0){
             return null;
@@ -89,7 +92,7 @@ public class ArrayDeque<T> {
             return firstitem;
         }
     }
-
+    
     public T removeLast(){
         if (size == 0){
             return null;
@@ -104,6 +107,7 @@ public class ArrayDeque<T> {
         }
     }
 
+    
     public T get(int index){
         return array[index];
     }
