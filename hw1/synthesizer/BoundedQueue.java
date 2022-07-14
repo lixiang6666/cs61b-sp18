@@ -2,16 +2,16 @@ package synthesizer;
 
 public interface BoundedQueue <T> extends Iterable<T>{
     int capacity();
-    int fillCourt();
+    int fillCount();
     void enqueue(T x);
     T dequeue();
     T peek();
 
     default boolean isEmpty(){
-        return fillCourt() == 0;
+        return fillCount() == 0;
     }
 
     default boolean isFull(){
-        return capacity() == fillCourt();
+        return capacity() == fillCount();
     }
 }
