@@ -1,10 +1,10 @@
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class IntListTest {
 
     /**
+     *
      * Example test that verifies correctness of the IntList.of static
      * method. The main point of this is to convince you that
      * assertEquals knows how to handle IntLists just fine.
@@ -69,5 +69,13 @@ public class IntListTest {
     /** If you're running this from the command line, you'll need
       * to add a main method. See ArithmeticTest.java for an
       * example. */
-
+    @Test(timeout = 1000)
+    public void testReverse(){
+        IntList A =  IntList.of(1,2,3,4);
+        IntList B = IntList.of(4,3,2,1);
+        IntList C = IntList.reverse(A);
+        assertEquals(B, C);
+        assertEquals(null, IntList.reverse(null));
+        assertNotEquals(A , C);
+    }
 }
