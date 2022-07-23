@@ -41,7 +41,7 @@ public class Game {
         // TODO: Fill out this method to run the game using the input passed in,
         // and return a 2D tile representation of the world that would have been
         // drawn if the same inputs had been given to playWithKeyboard().
-        long seed = Long.parseLong(input);
+        long seed = Long.parseLong(input, 36);
         wg = new WorldGenerator(seed, WIDTH, HEIGHT);
         TETile[][] finalWorldFrame = wg.getWorld();
         return finalWorldFrame;
