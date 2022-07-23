@@ -14,10 +14,8 @@ public class Game {
     /**
      * Method used for playing a fresh game. The game should start from the main menu.
      */
-    public Game(){
-        ter.initialize(WIDTH, HEIGHT);
-    }
     public void playWithKeyboard() {
+        ter.initialize(WIDTH, HEIGHT);
         TETile[][] world = new TETile[WIDTH][HEIGHT];
         for (int x = 0; x < WIDTH; x += 1) {
             for (int y = 0; y < HEIGHT; y += 1) {
