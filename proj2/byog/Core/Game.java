@@ -22,6 +22,7 @@ public class Game{
     boolean toLoad =  false;
     private Position door;
     private TETile[][] world;
+    private static File file = new File("./", "game.ser");
     private static InformationStored informationStored;
 
 
@@ -85,7 +86,7 @@ public class Game{
 
     private void objectSerialization(){
         try{
-            FileOutputStream fo = new FileOutputStream("game.ser");
+            FileOutputStream fo = new FileOutputStream(file.getName());
             ObjectOutputStream oo = new ObjectOutputStream(fo);
             oo.writeObject(informationStored);
             oo.close();
@@ -101,7 +102,7 @@ public class Game{
     }
     private static InformationStored objectDeserialization(){
         try{
-            FileInputStream fi = new FileInputStream("game.ser");
+            FileInputStream fi = new FileInputStream(file.getName());
             ObjectInputStream oi = new ObjectInputStream(fi);
             informationStored = (InformationStored) oi.readObject();
             oi.close();
