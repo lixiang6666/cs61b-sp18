@@ -22,7 +22,6 @@ public class Game{
     boolean toLoad =  false;
     private Position door;
     private TETile[][] world;
-    private static File file = new File("./", "game.ser");
     private static InformationStored informationStored;
 
 
@@ -86,7 +85,7 @@ public class Game{
 
     private void objectSerialization(){
         try{
-            FileOutputStream fo = new FileOutputStream(file.getName());
+            FileOutputStream fo = new FileOutputStream("data.ser");
             ObjectOutputStream oo = new ObjectOutputStream(fo);
             oo.writeObject(informationStored);
             oo.close();
@@ -102,7 +101,7 @@ public class Game{
     }
     private static InformationStored objectDeserialization(){
         try{
-            FileInputStream fi = new FileInputStream(file.getName());
+            FileInputStream fi = new FileInputStream("data.ser");
             ObjectInputStream oi = new ObjectInputStream(fi);
             informationStored = (InformationStored) oi.readObject();
             oi.close();
@@ -219,8 +218,9 @@ public class Game{
                     informationStored = objectDeserialization();
                     toLoad = true;
                     seed = informationStored.seedCopy;
+                    System.out.println(informationStored.Operation);
                     rand = new Random(seed);
-                    world = playWithInputString("l"+informationStored.Operation);
+                    world = playWithInputString("l");
                     break;
                 }
             }
@@ -252,8 +252,9 @@ public class Game{
             world = wg.getWorld();
             player = initWorld(world, Tileset.FLOOR, Tileset.PLAYER, rand);
             door = initWorld(world, Tileset.WALL, Tileset.LOCKED_DOOR, rand);
-            world = playWithInputString(informationStored.Operation);
-            return input.substring(1);
+            String operation = informationStored.Operation;
+            informationStored.Operation = "";
+            return operation + input.substring(1);
         }
         return input;
     }
