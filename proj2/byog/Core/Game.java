@@ -84,8 +84,9 @@ public class Game{
     }
 
     private void objectSerialization(){
+        File f = new File("./world.ser");
         try{
-            FileOutputStream fo = new FileOutputStream("data.ser");
+            FileOutputStream fo = new FileOutputStream(f);
             ObjectOutputStream oo = new ObjectOutputStream(fo);
             oo.writeObject(informationStored);
             oo.close();
@@ -100,8 +101,9 @@ public class Game{
         }
     }
     private static InformationStored objectDeserialization(){
+        File f = new File("./world.ser");
         try{
-            FileInputStream fi = new FileInputStream("data.ser");
+            FileInputStream fi = new FileInputStream(f);
             ObjectInputStream oi = new ObjectInputStream(fi);
             informationStored = (InformationStored) oi.readObject();
             oi.close();
