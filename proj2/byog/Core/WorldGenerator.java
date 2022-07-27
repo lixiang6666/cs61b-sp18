@@ -116,13 +116,13 @@ public class WorldGenerator {
        if (insideRoom(room1.lb, room2)||insideRoom(room1.lt, room2)||insideRoom(room1.rb, room2)||insideRoom(room1.rt, room2)){
            flag = true;
        }
-       if (insideRoom(room2.lb, room1)||insideRoom(room1.lt, room2)||insideRoom(room1.rb, room2)||insideRoom(room1.rt, room2)){
+       if (insideRoom(room2.lb, room1)||insideRoom(room2.lt, room1)||insideRoom(room2.rb, room1)||insideRoom(room2.rt, room1)){
            flag = true;
        }
-       if(room1.lt.yPos > room2.lt.yPos && room1.lb.yPos < room2.lb.yPos&&room1.lt.xPos > room2.lt.xPos&&room1.rt.xPos < room2.rt.xPos){
+       if(room1.lt.yPos >=room2.lt.yPos && room1.lb.yPos <= room2.lb.yPos&&room1.lt.xPos >= room2.lt.xPos&&room1.rt.xPos <= room2.rt.xPos){
            flag = true;
        }
-       if(room2.lt.yPos > room1.lt.yPos && room2.lb.yPos < room1.lb.yPos&&room2.lt.xPos > room1.lt.xPos&&room2.rt.xPos < room1.rt.xPos){
+       if(room2.lt.yPos >= room1.lt.yPos && room2.lb.yPos <= room1.lb.yPos&&room2.lt.xPos >= room1.lt.xPos&&room2.rt.xPos <= room1.rt.xPos){
            flag = true;
        }
        return flag;
